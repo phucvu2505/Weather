@@ -2,6 +2,7 @@ package com.example.phucv.weather.asyncTask;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.location.Location;
 import android.os.AsyncTask;
 
 import java.io.IOException;
@@ -24,7 +25,10 @@ public class CurrentWeatherAsyncTask extends AsyncTask<Void, Void, String>{
 
     private ProgressDialog mProgressDialog;
 
+    private Location location;
+
     public CurrentWeatherAsyncTask(Context context) {
+        this.location = location;
         mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setMessage("Loading.....");
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -36,7 +40,7 @@ public class CurrentWeatherAsyncTask extends AsyncTask<Void, Void, String>{
     protected String doInBackground(Void... params) {
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://api.openweathermap.org/data/2.5/weather?lat=21&lon=106&APPID=24c4a4e0f6c39150ce79ea184df5ba58")
+                .url("http://api.openweathermap.org/data/2.5/weather?lat=20.4507524&lon=-159.7498616&APPID=fee985a5cfe4764ab20deed98ff488aa")
                 .addHeader("Accept", "application/json")
                 .build();
         try{
